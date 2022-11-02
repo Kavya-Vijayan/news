@@ -1,0 +1,49 @@
+{% extends 'base.html' %}{% block content %}
+<section class="py-5">
+  <div class="bg-dark">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center text-light">Education</h2>
+        <hr />
+      </div>
+    </div>
+
+    <div class="row row-cols-lg-3 g-3 m-4">
+      {% for education in educations %}
+      <div class="col">
+        <div class="card bg-black text-light">
+          <img src="{{education.image.url}}" class="card-img-top" alt="..." height="200px" />
+          <div class="card-body">
+            <h5 class="card-title fw-bold">
+              <a
+                href="{% url 'core:education_detail' education.id %}"
+                class="link-danger"
+                >{{education.name}}</a
+              >
+            </h5>
+            <p class="card-text overflow-hidden" style="height: 50px;">Description: {{education.description}}</p>
+            <!-- categories -->
+            <div>
+              <p class="card-text">Categories</p>
+              <ul>
+                {% for category in education.category.all %}
+                <li>{{category}}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+            <p class="card-text text-muted fst-italic">
+              News updated: {{education.updated_on|date}}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col">
+        <p>no education found</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock content %}

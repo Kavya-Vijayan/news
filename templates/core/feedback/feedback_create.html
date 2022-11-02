@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="py-5 bg-dark ">
+  <div class="row">
+    <div class="col-lg-6">
+      <h1 class="text-light text-center">Feedback form</h1>
+      <p class="text-justify text-light">
+        News and Trends is the online version of a newspaper, either as a
+        stand-alone publication or as the online version of a printed
+        periodical. Going online created more opportunities for newspapers, such
+        as competing with broadcast journalism in presenting breaking news in a
+        more timely manner. The credibility and strong brand recognition of well
+        established newspapers, and the close relationships they have with
+        advertisers, are also seen by many in the newspaper industry as
+        strengthening their chances of survival.The movement away from the
+        printing process can also help decrease costs.is a platform, primarily
+        web-based, that collects facts from selected authentic sources.This is a
+        platform, primarily web-based, that collects facts from selected
+        authentic sources. It target specific individuals and works to gain
+        customers by providing credible and legitimate information, to aid their
+        perspective. With time, simple web portals have advanced into complex
+        portal structures that enormously facilitate buyer engagement and
+        retention. It consists of a customised website theme design that is
+        really creative and includes some good features that allow smooth
+        surfing. News Portal is an e-learning platform where one can share news
+        from numerous categories, like administration, art, movies, music,
+        market trends, technology etc.This news is updated in real time and is
+        easily accessible. By the very nature of its online presence, it is
+        location-independent and time-saving.
+      </p>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <form action="" method="post">
+            {% csrf_token %}
+            <table>
+              <tbody>
+                {{form.as_p}}
+              </tbody>
+            </table>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr/>
+{% endblock content %}
