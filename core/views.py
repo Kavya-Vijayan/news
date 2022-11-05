@@ -1,7 +1,7 @@
 from django import views
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from core.forms import EducationForm, FeedbackForm, LateststoryForm, SportForm, TopstoryForm
+from core.forms import EducationForm, FeedbackForm, LateststoryForm, SportForm, TopstoryForm, TopwriterForm
 from core import models as core_models
 from django.views import generic as views
 
@@ -105,6 +105,18 @@ class LateststoryByCategoryView(views.ListView):
         qs=qs.filter(category__id=pk)
         return qs
 
+
+#topstory listview
+class TopstoryByCategoryView(views.ListView):
+    template_name = "core/topstory/topstory_list.html"
+    model=core_models.TopstoryModel
+    context_object_name="topstories"
+    def get_queryset(self,*args,**kwargs):
+        qs=super().get_queryset(*args,**kwargs)
+        pk=self.kwargs.get("pk",None)
+        qs=qs.filter(category__id=pk)
+        return qs
+
  #====================================================================================================#
  #                                           Top story                                                #
  #====================================================================================================#
@@ -141,6 +153,48 @@ class TopstoryDeleteView(views.DeleteView):
     template_name = "core/topstory/topstory_delete.html"
     model = core_models.TopstoryModel
     success_url = reverse_lazy("core:topstory_list")
+
+
+
+
+#====================================================================================================#
+ #                                           Top writer                                              #
+ #===================================================================================================#
+
+#topwriter createview
+class TopwriterCreateView(views.CreateView):
+    template_name = "core/topwriter/topwriter_create.html"
+    form_class = TopwriterForm
+    success_url = reverse_lazy("core:topwriter_create")
+
+#listview
+class TopwriterListView(views.ListView):
+    template_name = "core/topwriter/topwriter_list.html"
+    model = core_models.TopwriterModel
+    context_object_name="topwriters"
+
+# detailview
+class TopwriterDetailView(views.DetailView):
+    template_name = "core/topwriter/topwriter_detail.html"
+    model = core_models.TopwriterModel
+    context_object_name="topwriters"
+
+
+#updateview
+class TopwriterUpdateView(views.UpdateView):
+    template_name = "core/topwriter/topwriter_update.html"
+    model = core_models.TopwriterModel
+    form_class =TopwriterForm
+    success_url = reverse_lazy("core:topwriter_list")
+
+# deleteview
+
+class TopwriterDeleteView(views.DeleteView):
+    template_name = "core/topwriter/topwriter_delete.html"
+    model = core_models.TopwriterModel
+    success_url = reverse_lazy("core:topwriter_list")
+
+
 
 
 #====================================================================================================#
@@ -220,6 +274,12 @@ class EducationDeleteView(views.DeleteView):
     success_url = reverse_lazy("core:education_list")
 
 
+#-------------------------------------------------------------------------------------------#
+#                                    local view                                             #
+#-------------------------------------------------------------------------------------------#
+class LocalView(views.TemplateView):
+     template_name = "core/local.html"
+
 #====================================================================================================#
 #                                          cart                                                      #
 #====================================================================================================#
@@ -240,11 +300,4 @@ class AddToBookmarkView(views.View):
         bookmark_post.save()
         url = request.META.get("HTTP_REFERER")
         return redirect(url)
-#-------------------------------------------------------------------------------------------#
-#                                    local view                                             #
-#-------------------------------------------------------------------------------------------#
-class LocalView(views.TemplateView):
-     template_name = "core/local.html"
 
-class NotificationView(views.TemplateView):
-     template_name = "core/notification.html"

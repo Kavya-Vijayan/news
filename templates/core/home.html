@@ -1,31 +1,29 @@
 {% extends 'base.html' %} {% block content %}
 <section>
-  <div>
-    <div class="row ">
-      <div class="col">
-        <h1 class="text-center text-danger bg-black fw-bold"><img src="./media/image/logo.jpeg"alt=""style="width:34px;">News & Trends</h1>
+  <div class="card-body bg-dark">
+        <h1 class="text-center text-primary  bg-black fw-bold display-3 fst-italic">
+          <img src="./media/image/logo.jpeg" alt="" style="width: 74px"/> News & Trends
+        </h1>
         <!-- latest -->
-        <section class=" bg-dark">
+        <section class="py-3 bg-dark">
           <div class="container-fluid bg-dark">
-            <div class="row ">
+            <div class="row">
               <div class="col">
-                <h2 class="text-center fs-1 text-light">Latest Stories</h2>
-                <hr/>
+                <h2 class="text-center fs-1 text-light p-2 font-monospace">Latest Stories</h2>
               </div>
             </div>
             <div class="row row-cols-lg-3 g-3 m-4">
               {% for lateststory in lateststories %}
-              <div class="col"> 
+              <div class="col">
                 <div class="card bg-black text-light">
                   <img
                     src="{{lateststory.image.url}}"
-                    class="card-img-top "
+                    class="card-img-top"
                     alt="..."
                     height="250px"
-                    
                   />
                   <div class="card-body">
-                    <h5 class="card-title  fw-bold">
+                    <h5 class="card-title fw-bold">
                       <a
                         href="{% url 'core:lateststory_detail' lateststory.id %}"
                         class="link-danger"
@@ -50,10 +48,10 @@
                     </p>
                   </div>
                   <div class="card-footer">
-                    <a href="{% url 'core:add_to_bookmark' lateststory.id %}" class="btn btn-danger">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                      </svg>
+                    <a
+                      href="{% url 'core:add_to_bookmark' lateststory.id %}"
+                      class="btn btn-danger bg-danger"
+                    ><i class="fa fa-bookmark " aria-hidden="true"></i>
                       Bookmark
                     </a>
                   </div>
@@ -66,16 +64,14 @@
               {% endfor %}
             </div>
           </div>
-          
         </section>
-        <hr/>
 
         <!-- top -->
         <section class="py-3 bg-dark">
-          <div class="container-fluid  bg-dark">
-            <div class="row ">
+          <div class="container-fluid bg-dark">
+            <div class="row">
               <div class="col">
-                <h2 class="text-center fs-1 text-light">Top Stories</h2>
+                <h2 class="text-center fs-1 text-light font-monospace">Top Stories</h2>
                 <hr />
               </div>
             </div>
@@ -85,12 +81,12 @@
                 <div class="card bg-black text-light">
                   <img
                     src="{{topstory.image.url}}"
-                    class="card-img-top "
+                    class="card-img-top"
                     alt="..."
                     height="250px"
                   />
                   <div class="card-body">
-                    <h5 class="card-title  fw-bold">
+                    <h5 class="card-title fw-bold">
                       <a
                         href="{% url 'core:topstory_detail' topstory.id %}"
                         class="link-danger"
@@ -113,6 +109,16 @@
                       News updated: {{topstory.updated_on|date}}
                     </p>
                   </div>
+
+                  <div class="card-footer">
+                    <a
+                      href="#"
+                      class="btn btn-danger bg-danger"
+                    ><i class="fa fa-bookmark " aria-hidden="true"></i>
+                      Bookmark
+                    </a>
+                  </div>
+
                 </div>
               </div>
               {% empty %}
@@ -123,25 +129,24 @@
             </div>
           </div>
         </section>
-        <hr />
 
         <!-- trending -->
         <section class="py-3 bg-dark">
           <div class="container-fluid bg-dark">
             <div class="row">
               <div class="col">
-                <h2 class="text-center fs-1 text-light">Trending News</h2>
-                <hr/>
+                <h2 class="text-center fs-1 text-light font-monospace">Trending News</h2>
+                <hr />
               </div>
             </div>
 
-            <div class="row row-cols-lg-3 g-3 m-4 ">
+            <div class="row row-cols-lg-3 g-3 m-4">
               {% for sport in sports %}
               <div class="col">
                 <div class="card bg-black text-light">
                   <img
                     src="{{sport.image.url}}"
-                    class="card-img-top "
+                    class="card-img-top"
                     alt="..."
                     height="250px"
                   />
@@ -170,7 +175,14 @@
                       News updated: {{sport.updated_on|date}}
                     </p>
                   </div>
-                  
+                  <div class="card-footer">
+                    <a
+                      href="#"
+                      class="btn btn-danger bg-danger"
+                    ><i class="fa fa-bookmark " aria-hidden="true"></i>
+                      Bookmark
+                    </a>
+                  </div>
                 </div>
               </div>
               {% empty %}
@@ -181,13 +193,10 @@
             </div>
           </div>
         </section>
-        <hr/>
-
-
+       
       </div>
     </div>
   </div>
-  
 </section>
 
 {% endblock content %}

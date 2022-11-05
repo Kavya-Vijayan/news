@@ -1,9 +1,9 @@
 {% extends 'base.html' %}{% block content %}
-<section class="py-5">
-  <div class="bg-dark">
+<section>
+  <div class="py-5 bg-dark">
     <div class="row">
       <div class="col">
-        <h2 class="text-center text-light">Top Stories</h2>
+        <h2 class="text-center text-light display-6 font-monospace">Top Stories</h2>
         <hr />
       </div>
     </div>
@@ -37,6 +37,13 @@
             </p>
           </div>
 
+          <div class="card-footer">
+            <a href="#" class="btn btn-danger bg-danger">
+              <i class="fa fa-bookmark " aria-hidden="true"></i>
+
+              Bookmark
+            </a>
+          </div>
 
         </div>
       </div>
@@ -46,6 +53,7 @@
       </div>
       {% endfor %}
     </div>
+    <hr>
   </div>
 </section>
 {% endblock content %}

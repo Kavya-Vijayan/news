@@ -8,7 +8,6 @@ urlpatterns = [
     path("",views.HomeView.as_view(),name="home"),
     path("about/",views.AboutView.as_view(),name="about_us"),
     path("local/",views.LocalView.as_view(),name="local"),
-    path("notication/",views.NotificationView.as_view(),name="notification"),
     # lateststory
     path("lateststory/list/",views.LateststoryListView.as_view(),name="lateststory_list"),
     path("lateststory/create",views.LateststoryCreateView.as_view(),name="lateststory_create"),
@@ -22,6 +21,14 @@ urlpatterns = [
     path("topstory/<int:pk>/detail/",views.TopstoryDetailView.as_view(),name="topstory_detail"),
     path("topstory/<int:pk>/update/",views.TopstoryUpdateView.as_view(),name="topstory_update"),
     path("topstory/<int:pk>/delete/",views.TopstoryDeleteView.as_view(),name="topstory_delete"),
+
+    # topwriter
+    path("topwriter/list/",views.TopwriterListView.as_view(),name="topwriter_list"),
+    path("topwriter/create",views.TopwriterCreateView.as_view(),name="topwriter_create"),
+    path("topwriter/<int:pk>/detail/",views.TopwriterDetailView.as_view(),name="topwriter_detail"),
+    path("topwriter/<int:pk>/update/",views.TopwriterUpdateView.as_view(),name="topwriter_update"),
+    path("topwriter/<int:pk>/delete/",views.TopwriterDeleteView.as_view(),name="topwriter_delete"),
+
 
     # sports
     path("sport/list/",views.SportListView.as_view(),name="sport_list"),
@@ -49,6 +56,11 @@ urlpatterns = [
 
     #lateststory list
     path("lateststory_by_category/<int:pk>/list/",views.LateststoryByCategoryView.as_view(),name="lateststory_by_category"),
+       
+    #topstory list
+    path("topstory_by_category/<int:pk>/list/",views.TopstoryByCategoryView.as_view(),name="topstory_by_category"),
+
+
 
     #bookmark
     path("bookmark/lateststory/<int:pk>/add/",views.AddToBookmarkView.as_view(), name="add_to_bookmark"),

@@ -48,6 +48,18 @@ class TopstoryModel(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+class TopwriterModel(models.Model):
+    name = models.CharField(max_length=64)
+    description = models.TextField(max_length=800)
+    image = models.ImageField(upload_to="topwriter/image/", default="default/topwriter.png")
+    category = models.ManyToManyField(CategoryModel)
+    status = models.BooleanField(default=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.name}"
+
 class SportModel(models.Model):
     name = models.CharField(max_length=64)
     description = models.TextField(max_length=800)
@@ -104,3 +116,4 @@ class BookmarkPostModel(models.Model):
 
     def __str__(self):
         return f"{self.lateststory}({self.quantity})"
+

@@ -1,44 +1,54 @@
 {% extends "base.html" %} {% block content %}
 
-<section class="py-5">
-  <div class="container">
+<section class="bg-dark">
+  <div class="p-4">
     <div class="row">
         <div class="col">
-            <h2 class="text-center">News Categories</h2>
+            <h1 class="text-center bg-dark text-light display-6 font-monospace">News Categories</h1>
             <hr>
         </div>
     </div>
     <div class="row">
-      <div class="col">
-        <table class="table table-bordered align-middle">
-          <thead>
-            <tr class="text-center fw-bold">
-              <th >Sl no</th>
-              <th>Name</th>
-              <th>parent</th>
-              <th>Last Updated</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            {% for category in categories %}
+      <div class="col p-4">
 
-            <tr>
-              <td class="text-center fw-bold">{{forloop.counter}}</td>
-              <td><a href="{% url 'core:lateststory_by_category' category.id %}">{{category.name}}</a></td>
-              <td>{{category.parent}}</td>
-              <td>{{category.updated_on|date}}</td>
-            </tr>
-            {% empty %}
-            <tr>
-              <td colspan="4">No categories!</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+            <div class="card bg-black m-4 ">
+              <div class="card-body link-primary text-center">
+                <p> 
+                <li><a  href="{% url 'core:lateststory_list' %}">Latest stories</a></li>
+                </p>
+              </div>
+            </div>
+            <div class="card bg-black m-4 ">
+              <div class="card-body link-primary text-center">
+                  <p> 
+                    <li><a  href="{% url 'core:topstory_list' %}">Top stories</a></li>
+                  </p>
+              </div>
+            </div>
+            <div class="card bg-black m-4 ">
+              <div class="card-body link-primary text-center">
+                  <p> 
+                    <li><a  href="{% url 'core:sport_list' %}">Sports</a></li>
+                  </p>
+              </div>
+            </div>
+            <div class="card bg-black m-4 ">
+              <div class="card-body link-primary text-center">
+                  <p> 
+                    <li><a  href="{% url 'core:education_list' %}">Education</a></li>
+                  </p>
+              </div>
+            </div>
+            <div class="card bg-black m-4 ">
+              <div class="card-body link-primary text-center">
+                  <p> 
+                    <li><a  href="{% url 'core:topwriter_list' %}">Top Writers</a></li>
+                  </p>
+              </div>
+            </div>
+           
       </div>
     </div>
   </div>
 </section>
-
 {% endblock content %}

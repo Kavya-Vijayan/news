@@ -18,6 +18,13 @@ class TopstoryForm(forms.ModelForm):
         # fields="__all__" #["name","message","email"]
         exclude=('status','created_on','updated_on',)
 
+class TopwriterForm(forms.ModelForm):
+    class Meta:
+        model=models.TopwriterModel
+        # fields="__all__" #["name","message","email"]
+        exclude=('status','created_on','updated_on',)
+
+
 class SportForm(forms.ModelForm):
     class Meta:
         model=models.SportModel

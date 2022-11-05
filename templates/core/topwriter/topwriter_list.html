@@ -3,53 +3,53 @@
   <div class="py-5 bg-dark">
     <div class="row">
       <div class="col">
-        <h2 class="text-center text-light display-6 font-monospace">Sports</h2>
+        <h2 class="text-center text-light display-6 font-monospace">Top Writers</h2>
         <hr />
       </div>
     </div>
 
     <div class="row row-cols-lg-3 g-3 m-4">
-      {% for sport in sports %}
+      {% for topwriter in topwriters %}
       <div class="col">
         <div class="card bg-black text-light">
-          <img src="{{sport.image.url}}" class="card-img-top" alt="..." height="200px" />
+          <img src="{{topwriter.image.url}}" class="card-img-top" alt="..." height="200px" />
           <div class="card-body">
             <h5 class="card-title fw-bold">
               <a
-                href="{% url 'core:sport_detail' sport.id %}"
+                href="{% url 'core:topwriter_detail' topwriter.id %}"
                 class="link-danger"
-                >{{sport.name}}</a
+                >{{topwriter.name}}</a
               >
             </h5>
-            
-            <p class="card-text overflow-hidden" style="height: 50px;">Description: {{sport.description}}</p>
+            <p class="card-text overflow-hidden" style="height: 50px;">Description: {{topwriter.description}}</p>
             <!-- categories -->
             <div>
               <p class="card-text">Categories</p>
               <ul>
-                {% for category in sport.category.all %}
+                {% for category in topwriter.category.all %}
                 <li>{{category}}</li>
                 {% endfor %}
               </ul>
             </div>
-            <!-- <p class="card-text">Category: {{sport.category}}</p> -->
+            <!-- <p class="card-text">Category: {{topstory.category}}</p> -->
             <p class="card-text text-muted fst-italic">
-              News updated: {{sport.updated_on|date}}
+              News updated: {{topwriter.updated_on|date}}
             </p>
           </div>
+
           <div class="card-footer">
-            <a
-              href="#"
-              class="btn btn-danger bg-danger"
-            ><i class="fa fa-bookmark " aria-hidden="true"></i>
+            <a href="#" class="btn btn-danger bg-danger">
+              <i class="fa fa-bookmark " aria-hidden="true"></i>
+
               Bookmark
             </a>
           </div>
+
         </div>
       </div>
       {% empty %}
       <div class="col">
-        <p>no sports found</p>
+        <p>no topstory found</p>
       </div>
       {% endfor %}
     </div>
