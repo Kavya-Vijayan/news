@@ -301,3 +301,30 @@ class AddToBookmarkView(views.View):
         url = request.META.get("HTTP_REFERER")
         return redirect(url)
 
+# =============================== profile ========================== #
+class ProfileView(views.TemplateView):
+     template_name = "core/profile/profile.html"
+
+class DashboardView(views.TemplateView):
+    template_name = "core/profile/dashboard.html"
+
+class ForgotView(views.TemplateView):
+    template_name = "core/profile/forgot.html"
+
+class PasswordResetEmailView(views.TemplateView):
+    template_name = "core/profile/password_reset_email.html"
+
+class PasswordResetConfirmView(views.TemplateView):
+    template_name = "core/profile/password_reset_confirm.html"
+
+class PasswordResetDoneView(views.TemplateView):
+    template_name = "core/profile/password_reset_done.html"
+
+class PasswordChangeFormView(views.TemplateView):
+    template_name = "core/profile/password_change_form.html"
+
+class PasswordChangeDoneView(views.TemplateView):
+    template_name = "core/profile/password_change_done.html"
+
+class ProfileUpdateView(views.TemplateView):
+    template_name = "core/profile/profile_update.html"

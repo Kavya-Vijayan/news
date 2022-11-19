@@ -37,3 +37,4 @@ class EducationForm(forms.ModelForm):
         model=models.EducationModel
         # fields="__all__" #["name","message","email"]
         exclude=('status','created_on','updated_on',)
+

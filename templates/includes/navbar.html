@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg nav text-primary" style="background-color: #0b0a25;">
+<nav class="navbar navbar-expand-lg nav text-primary sticky-top `" style="background-color: #0b0a25;">
   <div class="container-fluid">
-    <a class="navbar-brand text-light" href="#">News</a>
+    <a class="navbar-brand text-light " href="#">News</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,42 +21,6 @@
           <a class="nav-link text-light" href="{% url 'core:category_list' %}">Category</a>
         </li>
 
-        <!-- user -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle text-light"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            {% if user.is_authenticated %} 
-            {{user}} 
-            {% else %}
-            Account 
-            {% endif %}
-          </a>
-          <ul class="dropdown-menu">
-            {% if user.is_authenticated %}
-            <li>
-              <a class="dropdown-item" href="{% url 'user:user_logout' %}"
-                >Logout</a
-              >
-            </li>
-            {% else %}
-            <li>
-              <a class="dropdown-item" href="{% url 'user:user_login' %}"
-                >Login</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="{% url 'user:user_signup' %}"
-                >Signup</a
-              >
-            </li>
-            {% endif %}
-          </ul>
-        </li>
 
         <!-- bookmark -->
         {% if user.is_authenticated %}
@@ -91,26 +55,46 @@
             {% empty %}
             <li>Nothing Found!</li>
             {% endfor %}
-            
+           
           </ul>
         </li>
         {% endif %}
       </ul>
-
-        
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success text-light" type="submit">Search</button>
       </form>
+      <!-- user -->
       <form>
-        <li class="nav-item">
-          <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-bars text-light" aria-hidden="true"></i>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-light"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <i class="fa fa-user" aria-hidden="true"></i>
 
           </a>
           <ul class="dropdown-menu">
-            <!-- <li><a class="dropdown-item" href="{% url 'core:home' %}">Home</a></li> -->
+            {% if user.is_authenticated %}
+            
+            <li><a class="dropdown-item" href="{% url 'core:profile' %}">Profile</a></li>
+            
+            {% endif %}
+          </ul>
+        </li>
+      </form>
+      <!-- settings -->
+      
+      <form>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-bars text-light " aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'core:topwriter_list' %}">Top Writers</a></li>
             <li><a class="dropdown-item" href="{% url 'core:lateststory_list' %}">Latest stories</a></li>
             <li><a class="dropdown-item" href="{% url 'core:sport_list' %}">Sports</a></li>
@@ -123,6 +107,7 @@
           </ul>
         </li> 
       </form>
+      
     </div>
   </div>
 </nav>

@@ -1,6 +1,5 @@
 from django.contrib import admin
 from core import models
-
 admin.site.register(models.FeedbackModel)
 admin.site.register(models.LateststoryModel)
 admin.site.register(models.TopstoryModel)
