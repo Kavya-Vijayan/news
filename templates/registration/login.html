@@ -2,7 +2,7 @@
 <div class="container-fluid bg-light vh-100 bg-dark text-light">
   <div class="row justify-content-center align-items-center h-100">
     <div class="col-lg-6">
-      <div class="card shadow">
+      <div class="card shadow border-primary rounded-1">
         <div class="card-body bg-dark">
           <h1 class="card-title text-center p-2">Login</h1>
           <form action="" method="post">
@@ -11,7 +11,7 @@
               <a href="" class="link-primary">Forgot Password?</a>
               <a href="{% url 'user:user_signup' %}" class="link-primary">Create Account?</a>
             </div>
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary" href="{% url 'user:user_login' %}">Login</button>
           </form>
         </div>
       </div>

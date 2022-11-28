@@ -70,10 +70,5 @@ urlpatterns = [
     path("profile/",views.ProfileView.as_view(),name="profile"),
     path("dashboard/",views.DashboardView.as_view(),name="dashboard"),
     path("forgot/",views.ForgotView.as_view(),name="forgot"),
-    path("password_reset_email/",views.PasswordResetEmailView.as_view(),name="password_reset_email"),
-    path("password_reset_confirm/",views.PasswordResetConfirmView.as_view(),name="password_reset_confirm"),
-    path("password_reset_done/",views.PasswordResetDoneView.as_view(),name="password_reset_done"),
-    path("password_change_form/",views.PasswordChangeFormView.as_view(),name="password_change_form"),
-    path("password_change_done/",views.PasswordChangeDoneView.as_view(),name="password_change_done"),
-    path("profile_update/",views.ProfileUpdateView.as_view(),name="profile_update"),
+    
 ]

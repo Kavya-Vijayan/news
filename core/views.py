@@ -177,7 +177,7 @@ class TopwriterListView(views.ListView):
 class TopwriterDetailView(views.DetailView):
     template_name = "core/topwriter/topwriter_detail.html"
     model = core_models.TopwriterModel
-    context_object_name="topwriters"
+    context_object_name="topwriter"
 
 
 #updateview
@@ -314,17 +314,3 @@ class ForgotView(views.TemplateView):
 class PasswordResetEmailView(views.TemplateView):
     template_name = "core/profile/password_reset_email.html"
 
-class PasswordResetConfirmView(views.TemplateView):
-    template_name = "core/profile/password_reset_confirm.html"
-
-class PasswordResetDoneView(views.TemplateView):
-    template_name = "core/profile/password_reset_done.html"
-
-class PasswordChangeFormView(views.TemplateView):
-    template_name = "core/profile/password_change_form.html"
-
-class PasswordChangeDoneView(views.TemplateView):
-    template_name = "core/profile/password_change_done.html"
-
-class ProfileUpdateView(views.TemplateView):
-    template_name = "core/profile/profile_update.html"

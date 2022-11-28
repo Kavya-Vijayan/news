@@ -79,11 +79,9 @@
 
           </a>
           <ul class="dropdown-menu">
-            {% if user.is_authenticated %}
-            
+                        
             <li><a class="dropdown-item" href="{% url 'core:profile' %}">Profile</a></li>
-            
-            {% endif %}
+            <li><a class="dropdown-item" href="{% url 'core:dashboard' %}">Dashboard</a> </li>
           </ul>
         </li>
       </form>

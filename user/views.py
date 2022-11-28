@@ -3,10 +3,17 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import forms as auth_forms
-from django.contrib import messages
 
 from user import forms as user_form
-from user import models
+from user import models as user_models
+from user.forms import ProfileForm
+
+
+from django.conf import settings
+from django.core.mail import send_mail
+from django.contrib import messages
+from user.forms import UserRegisterform
+
 
 USER = get_user_model()
 
@@ -51,22 +58,21 @@ class UserLogoutView(views.View):
         logout(request)
         messages.success(request, "Successfully Logged out")
         return render(request, self.template_name)
+# ======================================================================
+class ProfileCreateView(views.CreateView):
+    template_name = "core/profile/profile_create.html"
+    model = user_models.ProfileModel
+    form_class = ProfileForm
+    success_url = reverse_lazy("user:profile_detail")
 
-# class ProfileCreateView(views.CreateView):
-#     template_name = "core/profile/profile_create.html"
-#     model = models.ProfileModel
-#     form_class = ProfileForm
-#     success_url = reverse_lazy("user:profile_detail")
+# feedback updateview
+class ProfileUpdateView(views.UpdateView):
+    template_name = "core/profile/profile_update.html"
+    model = user_models.ProfileModel
+    form_class = ProfileForm
+    success_url = reverse_lazy("user:profile_detail")
 
-# # feedback updateview
-# class ProfileUpdateView(views.UpdateView):
-#     template_name = "core/profile/profile_update.html"
-#     model = user_models.ProfileModel
-#     form_class = ProfileForm
-#     success_url = reverse_lazy("user:profile_detail")
-
-# class ProfileDetailView(views.TemplateView):
-#     template_name = "core/profile/profile.html"
-#     model = user_models.ProfileModel
-#     context_object_name = "profile"
-
+class ProfileDetailView(views.TemplateView):
+    template_name = "core/profile/profile.html"
+    model = user_models.ProfileModel
+    context_object_name = "profile"
