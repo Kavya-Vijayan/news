@@ -7,6 +7,7 @@ app_name = "core"
 urlpatterns = [
     path("",views.HomeView.as_view(),name="home"),
     path("about/",views.AboutView.as_view(),name="about_us"),
+    path("search/",views.SearchView.as_view(),name="search"),
     path("local/",views.LocalView.as_view(),name="local"),
     
     # lateststory

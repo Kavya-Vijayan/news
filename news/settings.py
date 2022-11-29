@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,3 +135,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Custom settings
 AUTH_USER_MODEL = "user.CustomUser"
+
+
+# Message Tags
+MESSAGE_TAGS = {
+    messages.INFO: "info",
+    messages.SUCCESS: "success",
+    messages.ERROR: "danger",
+    messages.WARNING: "warning",
+}
+
+
+# #email
+# EMAIL_HOST =
+# EMAIL_PORT =
+# EMAIL_HOST_USER =
+# EMAIL_HOST_PASSWORD =
+# EMAIL_USE_SSL =
+# EMAIL_USE_TLS =

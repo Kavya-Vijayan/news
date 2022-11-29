@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg nav text-primary sticky-top `" style="background-color: #0b0a25;">
   <div class="container-fluid">
-    <a class="navbar-brand text-light " href="#">News</a>
+    <a class="navbar-brand text-light" href="#">News</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,6 +11,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="{% url 'core:about_us' %}">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="{% url 'core:search' %}">Search</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="{% url 'core:feedback_create' %}"
@@ -61,9 +64,10 @@
         {% endif %}
       </ul>
       </ul>
+      <!-- search -->
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success text-light" type="submit">Search</button>
+        <button class="btn btn-outline-success text-light" type="submit"></a>Search</button>
       </form>
       <!-- user -->
       <form>
@@ -81,7 +85,26 @@
           <ul class="dropdown-menu">
                         
             <li><a class="dropdown-item" href="{% url 'core:profile' %}">Profile</a></li>
+            <hr/>
             <li><a class="dropdown-item" href="{% url 'core:dashboard' %}">Dashboard</a> </li>
+
+          </ul>
+        </li>
+      </form>
+      <!-- payment -->
+      <form>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link text-light"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <i class="fa-solid fa-crown" aria-hidden="true"></i>
+          </a>
+          <ul class="dropdown-menu">          
+            <li><a class="dropdown-item" href="#">Premium</a></li>
           </ul>
         </li>
       </form>
@@ -93,15 +116,41 @@
             <i class="fa fa-bars text-light " aria-hidden="true"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{% url 'core:topwriter_list' %}">Top Writers</a></li>
-            <li><a class="dropdown-item" href="{% url 'core:lateststory_list' %}">Latest stories</a></li>
-            <li><a class="dropdown-item" href="{% url 'core:sport_list' %}">Sports</a></li>
-            <li><a class="dropdown-item" href="{% url 'core:topstory_list' %}">Top Stories</a></li>
-            <li><a class="dropdown-item" href="{% url 'core:education_list' %}">Education</a></li>
-            <li><a class="dropdown-item" href="{% url 'core:local' %}">Local</a></li>
-            <hr/>
-            <li><a class="dropdown-item" href="{% url 'core:feedback_create' %}">Feedback</a></li>
-            <li><a class="dropdown-item" href="{% url 'core:about_us' %}">About us</a></li>
+            <div class="list-group">
+              <a class="list-group-item" href="{% url 'core:home' %}">
+                <i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home</a>
+            </div>
+            <div  class="list-group">
+              <a class="list-group-item" href="{% url 'core:profile' %}">
+                <i class="fa fa-user fa-fw" aria-hidden="true"></i>&nbsp;Profile</a>
+            </div>
+            <div  class="list-group">
+              <a class="list-group-item" href="#">
+                <i class="fa-solid fa-crown fa-fw" aria-hidden="true"></i>&nbsp;Premium</a>
+            </div>
+            <div  class="list-group">
+              <a class="list-group-item" href="{% url 'core:topwriter_list' %}">
+                <i class="fa-solid fa-pen fa-fw" aria-hidden="true"></i>&nbsp;Top Writers</a>
+            </div>
+            <div  class="list-group">
+              <a class="list-group-item" href="{% url 'core:lateststory_list' %}">
+                <i class=" fa-fw" aria-hidden="true"></i>Latest stories</a>
+            </div>
+            <div  class="list-group">
+              <a class="list-group-item" href="{% url 'core:sport_list' %}">
+                <i class=" fa-fw" aria-hidden="true"></i>Sports</a>
+            </div>
+            <div  class="list-group">
+              <a class="list-group-item" href="{% url 'core:education_list' %}">
+                <i class=" fa-fw" aria-hidden="true"></i>Education</a>
+            </div>
+            <!-- <li><a class="dropdown-item" href="{% url 'core:local' %}">Local</a></li> -->
+            <div  class="list-group">
+              <a class="list-group-item" href="{% url 'core:feedback_create' %}">
+                <i class=" fa-fw" aria-hidden="true"></i>Feedback</a>
+              <a class="list-group-item" href="{% url 'core:about_us' %}">
+                  <i class=" fa-fw" aria-hidden="true"></i>About us</a>
+            </div>
           </ul>
         </li> 
       </form>

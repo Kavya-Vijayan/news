@@ -1,6 +1,9 @@
 from django import views
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+
+
+from django.contrib import messages
 from core.forms import EducationForm, FeedbackForm, LateststoryForm, SportForm, TopstoryForm, TopwriterForm
 from core import models as core_models
 from django.views import generic as views
@@ -16,6 +19,10 @@ class HomeView(views.TemplateView):
 #about usview
 class AboutView(views.TemplateView):
      template_name = "core/about_us.html"
+
+# search view
+class SearchView(views.TemplateView):
+     template_name = "core/search.html"
 
 
 #====================================================================================================#
@@ -274,33 +281,6 @@ class EducationDeleteView(views.DeleteView):
     success_url = reverse_lazy("core:education_list")
 
 
-#-------------------------------------------------------------------------------------------#
-#                                    local view                                             #
-#-------------------------------------------------------------------------------------------#
-class LocalView(views.TemplateView):
-     template_name = "core/local.html"
-
-#====================================================================================================#
-#                                          cart                                                      #
-#====================================================================================================#
-
-class AddToBookmarkView(views.View):
-    def get(self, request, pk):
-        user = request.user
-        lateststory = core_models.LateststoryModel.objects.get(id=pk)
-        bookmark, bookmark_created = core_models.BookmarkModel.objects.get_or_create(
-            user=user
-        )
-        bookmark_post, bookmark_post_created = core_models.BookmarkPostModel.objects.get_or_create(
-            bookmark=bookmark, lateststory=lateststory
-        )
-        if not bookmark_post_created:
-            bookmark_post.quantity += 1
-
-        bookmark_post.save()
-        url = request.META.get("HTTP_REFERER")
-        return redirect(url)
-
 # =============================== profile ========================== #
 class ProfileView(views.TemplateView):
      template_name = "core/profile/profile.html"
@@ -313,4 +293,35 @@ class ForgotView(views.TemplateView):
 
 class PasswordResetEmailView(views.TemplateView):
     template_name = "core/profile/password_reset_email.html"
+#-------------------------------------------------------------------------------------------#
+#                                    local view                                             #
+#-------------------------------------------------------------------------------------------#
+class LocalView(views.TemplateView):
+     template_name = "core/local.html"
+
+#====================================================================================================#
+#                                          bookmark                                                  #
+#====================================================================================================#
+
+class AddToBookmarkView(views.View):
+    def get(self, request, pk):
+        # try:
+        user = request.user
+        lateststory = core_models.LateststoryModel.objects.get(id=pk)
+        bookmark, bookmark_created = core_models.BookmarkModel.objects.get_or_create(
+            user=user
+        )
+        bookmark_post, bookmark_post_created = core_models.BookmarkPostModel.objects.get_or_create(
+            bookmark=bookmark, lateststory=lateststory
+        )
+        if not bookmark_post_created:
+            bookmark_post.quantity += 1
+
+        bookmark_post.save()
+        messages.success(request, "Product added successfully!")
+        # except Exception as e:
+        #     print(e)
+        #     messages.error(request, f"Product couldn't add! ERROR:-{e}")
+        url = request.META.get("HTTP_REFERER")
+        return redirect(url)
 
