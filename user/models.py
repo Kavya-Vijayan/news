@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
+from django.urls import reverse
 
 
 class CustomUser(AbstractUser):
@@ -13,7 +14,6 @@ USER = settings.AUTH_USER_MODEL
 class LocationModel(models.Model):
     lattitude = models.FloatField()
     longitude = models.FloatField()
-    
 
     def __str__(self):
         return f"{self.lattitude},{self.longitude}"
@@ -49,7 +49,9 @@ class ProfileModel(models.Model):
     last_name = models.CharField(max_length=64)
     dob = models.DateField()
     gender = models.CharField(max_length=15, choices=GENDER_CHOICES)
-    image = models.ImageField(upload_to="user/profile/image/", default="default/user.png")
+    image = models.ImageField(
+        upload_to="user/profile/image/", default="default/user.png"
+    )
     phone_number = models.CharField(max_length=15)
     address = models.ManyToManyField(AddressModel, blank=True)
     user = models.OneToOneField(USER, on_delete=models.CASCADE)
@@ -59,3 +61,7 @@ class ProfileModel(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}".title()
+
+    def get_absolute_url(self):
+        url = reverse("core:profile_detail", kwargs={"pk": self.id})
+        return url

@@ -1,40 +1,26 @@
 from django import forms
 from core import models
+
+
 class FeedbackForm(forms.ModelForm):
     class Meta:
-        model=models.FeedbackModel
-        # fields="__all__" #["name","message","email"]
-        exclude=('status',)
+        model = models.FeedbackModel
+        exclude = ("status",)
 
-class LateststoryForm(forms.ModelForm):
+
+class NewsForm(forms.ModelForm):
     class Meta:
-        model=models.LateststoryModel
-        # fields="__all__" #["name","message","email"]
-        exclude=('status','created_on','updated_on',)
+        model = models.NewsModel
+        exclude = ("status",)
 
-class TopstoryForm(forms.ModelForm):
+
+class NewsImageForm(forms.ModelForm):
     class Meta:
-        model=models.TopstoryModel
-        # fields="__all__" #["name","message","email"]
-        exclude=('status','created_on','updated_on',)
+        model = models.NewsImages
+        fields = ["image"]
 
-class TopwriterForm(forms.ModelForm):
+
+class BookmarkForm(forms.ModelForm):
     class Meta:
-        model=models.TopwriterModel
-        # fields="__all__" #["name","message","email"]
-        exclude=('status','created_on','updated_on',)
-
-
-class SportForm(forms.ModelForm):
-    class Meta:
-        model=models.SportModel
-        # fields="__all__" #["name","message","email"]
-        exclude=('status','created_on','updated_on',)
-
-
-class EducationForm(forms.ModelForm):
-    class Meta:
-        model=models.EducationModel
-        # fields="__all__" #["name","message","email"]
-        exclude=('status','created_on','updated_on',)
-
+        model = models.BookmarkModel
+        exclude = ("status",)

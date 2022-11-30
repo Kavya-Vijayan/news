@@ -145,11 +145,29 @@ MESSAGE_TAGS = {
     messages.WARNING: "warning",
 }
 
+# Email Integration
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = 'sent_mails' # change this to a proper location
 
-# #email
-# EMAIL_HOST =
-# EMAIL_PORT =
-# EMAIL_HOST_USER =
-# EMAIL_HOST_PASSWORD =
-# EMAIL_USE_SSL =
-# EMAIL_USE_TLS =
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "news.kavyav@gmail.com"
+EMAIL_HOST_PASSWORD = "Lalitha@888"
+EMAIL_USE_TSL = True
+
+# Google credentials
+GOOGLE_API_KEY = "AIzaSyCUWBrXHWY_mObVlpG1PXruUaNs2MxHJ6U"
+GOOGLE_CLIENT_ID = "724597826498-vni74shcpsuou976m2jf1pu9scaghg9q.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = "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"
+
+
+# Authentication URLS
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
+LOGIN_REDIRECT_URL = "core:home"
+LOGOUT_REDIRECT_URL = "logout"
+
+# Razorpay
+RAZORPAY_KEY_ID = "rzp_test_dlkdtnJL7F2D4C"
+RAZORPAY_KEY_SECRET = "D1wF3qTQpMmtU1LpKIFMFezK"

@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<section class="bg-destination">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for category in categories %}
+ 
+    <a href="{% url 'core:category_list' category.id %}" class="underline">
+      <div class="card"  style="height: 450px;">
+        {% for image in category.image.all %}
+          <img src="{{image.file.url}}" class="card-img-top" height="200px" alt="">
+          {% endfor %}
+        <div class="card-body bg-cardhome">
+          
+          <h5 class="card-title destination"><strong>{{category.name}}</strong></h5>
+          <p class="card-text text"><i>{{category.list}}</i></p>
+          <p class="category"><i>Select news</i></p>
+        </div>
+       
+      </div></a>
+    
+    {% empty %}
+    <div class="col">
+      <p>no news!</p>
+    </div>
+    {% endfor %}
+  </div>
+</section><br>
+
+{% endblock content %}
